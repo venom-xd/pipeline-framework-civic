@@ -1,0 +1,20 @@
+curl -X POST http://127.0.0.1:5000/run_pipeline ^
+-H "Content-Type: application/json" ^
+-d "{\"file_path\": \"dataset.csv\", \"task_order\": [\"missing_values\"], \"task_params\": {\"missing_values\": {\"columns\": [\"Name\", \"Age\", \"Email\"], \"thresholds\": {\"Name\": 0, \"Age\": 0, \"Email\": 0}}}}"
+
+
+
+curl -X POST http://127.0.0.1:5000/run_pipeline ^
+-H "Content-Type: application/json" ^
+-d "{\"file_path\": \"dataset.csv\", \"task_order\": [\"duplicate_rows\"], \"task_params\": {\"duplicate_rows\": {\"subset\": [\"ID\", \"Name\", \"Age\", \"Email\"]}}}"
+
+
+
+curl -X POST http://127.0.0.1:5000/run_pipeline ^
+-H "Content-Type: application/json" ^
+-d "{\"file_path\": \"dataset.csv\", \"task_order\": [\"missing_values\", \"duplicate_rows\"], \"task_params\": {\"missing_values\": {\"columns\": [\"Name\", \"Age\", \"Email\"], \"thresholds\": {\"Name\": 0, \"Age\": 0, \"Email\": 0}}, \"duplicate_rows\": {\"subset\": [\"ID\", \"Name\", \"Age\", \"Email\"]}}}"
+
+
+curl -X POST http://127.0.0.1:5000/run_pipeline ^
+-H "Content-Type: application/json" ^
+-d "{\"file_path\": \"dataset.csv\", \"task_order\": [\"duplicate_rows\", \"missing_values\"], \"task_params\": {\"missing_values\": {\"columns\": [\"Name\", \"Age\", \"Email\"], \"thresholds\": {\"Name\": 0, \"Age\": 0, \"Email\": 0}}, \"duplicate_rows\": {\"subset\": [\"ID\", \"Name\", \"Age\", \"Email\"]}}}"
